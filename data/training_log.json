@@ -1,0 +1,394 @@
+[
+  {
+    "timestamp": "2026-02-27T18:10:54.360196",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis\n\n## 1. Best Performing Combos\n**B+_SHORT_scalp** is your only viable signal: 40% win rate across 5 trades. This is marginally profitable territory if commissions/slippage are <5% per side. Prioritize scalping SHORT positions on B+ grade signals.\n\n## 2. Failing Combinations\n**B+_LONG_day** is a critical failure: 0% win rate on 2 trades. Disable day-trading on LONG positions immediately\u2014this combo is systematically losing.\n\n## 3. Indicator Threshold Focus\n**Critical problem:** You have zero synthetic training data, meaning your ML model lacks ground truth patterns. Immediate action required:\n\n- **Sample size is dangerously low** (8 trades total). You cannot optimize thresholds statistically yet.\n- For B+_SHORT_scalp: Reverse-engineer the 3 winning trades. Extract exact indicator values at entry. Identify what separated wins from the 2 losses.\n- Focus on **volatility-directional alignment**: Short scalps likely work best when short-term volatility spikes align with downtrend confirmation (RSI >70, moving average slope, volume profile).\n\n## 4. Concerning Patterns\n- **Zero A+ or C+ trades executed**: Either your signal generator isn't producing them, or filters are too tight/loose.\n- **No winning LONG trades**: Suggests bullish signal generation is broken or market regime is bearish.\n- **Scalp success vs. day failure**: Implies holding periods >1 hour destroy profit. Time decay or adverse movement accumulation is killing longer trades.\n\n## 5. Priority Adjustments\n\n| Signal Grade | Action |\n|---|---|\n| **A+**",
+    "real_trades": 8,
+    "synthetic_trades": 0
+  },
+  {
+    "timestamp": "2026-02-27T20:00:34.673247",
+    "type": "deep_analysis",
+    "analysis": "# Critical Analysis: Severe Data Insufficiency\n\n**Core Problem:** 9 total trades is statistically meaningless. Zero synthetic patterns compounds this. No reliable conclusions possible.\n\n## Findings:\n\n**1. Best Performers:**\n- B+_SHORT_scalp: 33.3% win rate (2/6 wins) \u2014 marginally above 0%, insufficient for confidence\n\n**2. Hardest Filters Needed:**\n- B+_LONG_day: 0% win rate (0/2) \u2014 **ELIMINATE immediately**. Day-long holds on B+ signals consistently fail.\n\n**3. Indicator Focus (Cannot Determine):**\nWithout feature correlation data, impossible to identify which indicators drive the 2 SHORT_scalp wins vs. 4 losses. Request:\n- Indicator snapshots at entry for all 9 trades\n- Correlation matrix of winning vs. losing signals\n- ML needs minimum 200+ samples per combo to validate thresholds\n\n**4. Concerning Patterns:**\n- **Directional bias:** SHORT scalps 6.7% better than LONG days (33.3% vs. 0%)\n- **Timeframe issue:** Day-holds fundamentally broken; scalps partially viable\n- **Grade dilution:** B+ signals passing with 33% accuracy suggests filtering criteria are too loose\n- **Sample asymmetry:** 6 SHORT vs. 2 LONG indicates possible survivorship bias (losing LONGs already filtered/stopped)\n\n**5. Priority Adjustments:**\n\n| Action | Rationale |\n|--------|-----------|\n| **HARD STOP:** B+_LONG_day | 0% \u2014 unacceptable |\n| **PAUSE:** B+_SHORT_scalp | Validate next 15",
+    "real_trades": 9,
+    "synthetic_trades": 0
+  },
+  {
+    "timestamp": "2026-02-27T20:11:56.570520",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis\n\n## 1. Best Performing Combos\n**B+_SHORT_scalp: 33.3% win rate (6 trades)**\nThis is your only profitable signal type. Despite modest win rate, it's the sole viable strategy in current data. Prioritize scaling this.\n\n**B+_LONG_day: 0% win rate (2 trades)**\nComplete failure\u2014insufficient for meaningful analysis but decisively unprofitable.\n\n## 2. Consistently Losing Combinations\n**B+_LONG_day must be filtered immediately.** Zero wins across 2 trades is disqualifying. Don't wait for larger sample sizes; this direction+timeframe pairing is broken.\n\nThe SHORT scalp setup works; LONG day doesn't. This suggests:\n- LONG entries lack proper reversal confirmation\n- Day timeframe may have too much noise for your indicators\n- Or your B+ grade is poorly calibrated for intraday LONG positions\n\n## 3. Critical ML Focus Areas\nWith only 9 real trades, your dataset is **dangerously small**. Prioritize:\n- **Scalp timing precision**: B+_SHORT scalp worked 33.3% of the time\u2014identify what made 2 of 6 winners different from 4 losers\n- **Entry confirmation indicators**: Your B+ grading clearly misses key signals for LONG entries\n- **Volatility regime filtering**: Scalps succeeded while day trades failed\u2014test ATR or Bollinger Band width thresholds to separate regimes\n\n## 4. Concerning Patterns\n- **Zero synthetic training data** means you're flying blind. Your indicators aren't generating testable patterns.\n- **Only 9 real trades** = statistical noise. Any conclusion is premature.\n-",
+    "real_trades": 9,
+    "synthetic_trades": 0
+  },
+  {
+    "timestamp": "2026-02-27T20:16:27.924617",
+    "type": "deep_analysis",
+    "analysis": "# Crypto Futures Signal Bot Analysis\n\n## 1. Best Performing Combinations\n**B+_SHORT_scalp: 33.3% win rate (6 trades)** is your only profitable real signal. This is your production winner\u2014scalp shorts with B+ grade signals show consistent execution. A+_LONG_scalp shows 100% in synthetic data (2 samples), but this is dangerously low sample size for real validation.\n\n## 2. Consistently Losing Combinations\n**B+_LONG_day: 0% win rate (2 trades)** \u2014 filter this out immediately. Day-trading longs on B+ signals produces zero wins. This suggests your long-entry mechanics fail on B+ confidence levels with extended holding periods. C+_LONG_swing also shows 0%, confirming low-grade longs are broken.\n\n## 3. Critical Indicator Thresholds\nFocus ML optimization on:\n- **Scalp vs. Day entry timing**: SHORT scalps work; LONG days fail. Your SHORT scalp logic captures micro reversals your LONG day logic misses. Isolate what differentiates successful scalp entries (likely tighter stops, momentum confirmation, volatility thresholds).\n- **B+ confidence boundaries**: B+ succeeds on shorts but fails on longs. Separate the indicator components\u2014B+ may be good for mean-reversion (shorts) but poor for trend-following (longs).\n- **Holding period sensitivity**: Your 9-trade sample shows scalps outperform. Optimize max holding duration constraints by signal grade.\n\n## 4. Concerning Patterns\n- **Severe data imbalance**: Only 9 real trades vs. 10 synthetic. Synthetic A+ shows 100% but doesn't replicate in production",
+    "real_trades": 9,
+    "synthetic_trades": 10
+  },
+  {
+    "timestamp": "2026-02-27T20:41:17.977429",
+    "type": "deep_analysis",
+    "analysis": "# Critical Analysis: Major Red Flags\n\n## 1. Best Performing Combinations\n- **A+_LONG_scalp**: 100% win rate (4 trades, synthetic)\n- **A+_SHORT_day**: 100% win rate (3 trades, synthetic)\n\n**Problem**: These only exist in synthetic data. Real performance shows zero A+ signals generated\u2014major disconnect between training and live execution.\n\n## 2. Consistent Losers\n- **C+_LONG_swing**: 0% win rate (4 trades)\n- **B+_LONG_day**: 0% win rate (2 real trades) vs. 66.7% synthetic\n\nFilter out C+ signals entirely. B+_LONG_day has reversed catastrophically in live trading\u2014disable or increase entry thresholds by 40-50%.\n\n## 3. Indicator Threshold Focus\nThe system is generating mostly B+ SHORT scalps (33.3% real win rate, 6 trades). You need to:\n- **Increase A+ threshold criteria** by 20-30% to match live market difficulty\n- **Examine SHORT scalp indicators specifically**\u2014they're your only live winner\n- **Debug LONG signal generation**\u2014why aren't A+ longs triggering?\n\n## 4. Concerning Patterns\n- **Synthetic-real gap is extreme**: 100% vs. 33% win rates indicate severe overfitting\n- **Direction bias**: Only SHORT scalps work live; LONG trades fail completely\n- **Sample size crisis**: 9 real trades insufficient for statistical confidence\n- **Grade inflation**: A+ signals don't appear in live data despite 100% synthetic performance\n\n## 5. Priority Adjustments\n\n1. **Kill C+ filtering entirely** (0% real",
+    "real_trades": 9,
+    "synthetic_trades": 21
+  },
+  {
+    "timestamp": "2026-02-27T20:41:20.066713",
+    "type": "retrain",
+    "real_samples": 9,
+    "synthetic_samples": 21,
+    "total_samples": 30
+  },
+  {
+    "timestamp": "2026-02-27T20:52:55.419241",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis\n\n## 1. Best Performing Combinations\n**A+ signals across all timeframes dominate:**\n- A+_LONG_scalp: 100% (5 trades)\n- A+_SHORT_day: 100% (4 trades)\n- A+_SHORT_scalp: 100% (2 trades)\n- A+_SHORT_swing: 100% (2 trades)\n\n**Action:** Prioritize A+ signals exclusively. They show 100% consistency across 13 synthetic trades.\n\n## 2. Combinations to Filter/Eliminate\n**Hard stops required:**\n- C+_LONG_swing: 0% (4 losses)\n- C+_LONG_day: 0% (2 losses)\n- B+_LONG_day: 0% in live (2 losses) vs 75% synthetic (4 trades) \u2014 **major discrepancy**\n\n**C+ signals are worthless.** Eliminate entirely. B+_LONG_day shows severe degradation from backtest to live trading\u2014suggests overfitting or market regime shift.\n\n## 3. Indicator Focus Areas\nThe A+/B+/C+ grading system is your primary threshold to optimize:\n- **Tighten C+ filters:** Current thresholds are catching false signals. Increase all indicator stringency by 15-20%.\n- **B+ validation:** B+_LONG_day's 75%\u21920% collapse suggests the day-trading indicator combo needs recalibration. Test if SHORT bias works better (B+_SHORT_scalp: 33.3% is also weak).\n- **Strengthen A+ gating:** Your A+ criteria work. Reverse-engineer what makes A+ signals work",
+    "real_trades": 9,
+    "synthetic_trades": 31
+  },
+  {
+    "timestamp": "2026-02-27T20:52:58.143392",
+    "type": "retrain",
+    "real_samples": 9,
+    "synthetic_samples": 31,
+    "total_samples": 40
+  },
+  {
+    "timestamp": "2026-02-27T21:15:04.147211",
+    "type": "deep_analysis",
+    "analysis": "# Crypto Futures Signal Bot Analysis\n\n## 1. BEST PERFORMING COMBINATIONS\n**A+ signals dominate across all timeframes:**\n- A+_LONG_scalp: 100% (9 samples)\n- A+_SHORT_scalp: 100% (6 samples)\n- A+_LONG_day: 100% (3 samples)\n- A+_SHORT_day: 100% (6 samples)\n- A+_SHORT_swing: 100% (3 samples)\n\n**B+ scalps show promise but with real-world degradation:**\n- Training: 66.7% (3 samples)\n- Real trades: 33.3% (6 samples) \u2014 **major red flag**\n\n## 2. COMBINATIONS TO FILTER HARDER\n**All C+ signals fail consistently:**\n- C+_LONG_swing: 0% (6 samples)\n- C+_LONG_day: 0% (2 samples)\n- C+_LONG_scalp: 0% (3 samples)\n- C+_SHORT_day: 0% (2 samples)\n\n**B+_LONG_day: 0% in real trading** (2/2 losses) despite 75% in training \u2014 severe overfitting indicator.\n\n## 3. CRITICAL FINDING: TRAIN-TEST GAP\nYour A+ grade signals show **100% synthetic performance but minimal real-world data** (0 real trades executed). B+ signals show **dramatic performance collapse**:\n- B+_LONG_scalp: 66.7% \u2192 untested real-world\n- B+_SHORT_scalp: 33.3% (6 real trades) = **only profitable",
+    "real_trades": 9,
+    "synthetic_trades": 61
+  },
+  {
+    "timestamp": "2026-02-27T21:15:07.137630",
+    "type": "retrain",
+    "real_samples": 9,
+    "synthetic_samples": 61,
+    "total_samples": 70
+  },
+  {
+    "timestamp": "2026-02-27T21:30:15.057646",
+    "type": "deep_analysis",
+    "analysis": "# Critical Analysis: Severe Overfitting Detected\n\n## 1. Best Performing Combos (Synthetic)\n**A+ signals dominate**: A+_LONG_scalp (100%, n=11), A+_SHORT_scalp (100%, n=7), A+_LONG_day (100%, n=3), A+_SHORT_day (100%, n=6). These show 100% win rates across 27 samples.\n\n## 2. Consistently Losing Patterns\n**C+ grades are poison**: C+_LONG signals = 0% across all timeframes (9 samples). C+_SHORT_day = 0% (3 samples). **Eliminate all C+ signals immediately\u2014zero edge.**\n\nB+_LONG_day also problematic: 70% synthetic vs. **0% real** (2 trades). This is your biggest red flag.\n\n## 3. The Real Problem: Train-Test Mismatch\nYour synthetic data shows B+_SHORT_scalp at 100% (n=2), but real trades show 33.3% (n=6). This 66.7% performance gap indicates:\n- **Synthetic patterns don't replicate live market conditions**\n- Your indicator thresholds are too loose in backtest mode\n- Survivorship bias in training data\n\n## 4. Concerning Patterns\n- Only 9 real trades vs. 71 synthetic = insufficient live validation\n- A+ signals untested in live trading (highest confidence, zero real execution)\n- B+_LONG_day: Complete failure in real markets despite 70% backtest performance\n- Sample sizes too small (some combos n=2-3) for statistical significance\n\n## 5. Priority Adjustments\n\n**",
+    "real_trades": 9,
+    "synthetic_trades": 71
+  },
+  {
+    "timestamp": "2026-02-27T21:30:17.723686",
+    "type": "retrain",
+    "real_samples": 9,
+    "synthetic_samples": 71,
+    "total_samples": 80
+  },
+  {
+    "timestamp": "2026-02-27T21:33:26.587085",
+    "type": "deep_analysis",
+    "analysis": "# Crypto Futures Signal Analysis\n\n## 1. Best Performing Combinations (Training Data)\n**A-grade signals dominate:**\n- A+_LONG_scalp: 100% (13 samples) \u2014 highest volume + perfect record\n- A+_SHORT_scalp: 100% (8 samples)\n- A+_LONG_day: 100% (3 samples)\n- A+_SHORT_day: 100% (3 samples)\n- A+_SHORT_swing: 100% (5 samples)\n\n**B-grade secondary tier:**\n- B+_SHORT_day: 100% (3 samples)\n- B+_SHORT_swing: 100% (2 samples)\n\n## 2. Consistently Losing Signals (Hard Filter)\n**Complete failures in training:**\n- C+_LONG_day: 0% (4 samples)\n- C+_LONG_scalp: 0% (3 samples)\n- C+_SHORT_day: 0% (3 samples)\n\n**Critical finding:** ALL C-grade LONG positions failed. Filter out C+ entirely\u2014no edge detected.\n\n## 3. Most Concerning Pattern: Reality vs. Backtest\n**B+_SHORT_scalp showing severe overfitting:**\n- Training: 100% win rate (2 samples)\n- Live trading: 33.3% win rate (6 samples)\n- **Gap: -66.7 percentage points**\n\nThis is your biggest red flag. The training data was too sparse and non-representative.\n\n## 4. Actionable Thresholds\n**Prioritize ML focus on A-grade indicators:**\n- Concentrate training effort on what distinguishes A+ from B",
+    "real_trades": 9,
+    "synthetic_trades": 81
+  },
+  {
+    "timestamp": "2026-02-27T21:33:29.530859",
+    "type": "retrain",
+    "real_samples": 9,
+    "synthetic_samples": 81,
+    "total_samples": 90
+  },
+  {
+    "timestamp": "2026-02-27T22:06:21.110297",
+    "type": "deep_analysis",
+    "analysis": "# Critical Analysis: Severe Overfitting Detected\n\n## 1. Best Win Rate Combos (Training Data)\nA+ signals dominate: A+_LONG_scalp (100%, n=15), A+_SHORT_scalp (100%, n=10), A+_LONG_day (100%, n=3), A+_SHORT_day (100%, n=3). B+_SHORT_day also shows 100% (n=4).\n\n## 2. Consistent Losers\n**C+ grade is systematically unprofitable:** C+_LONG_day (0%, n=4), C+_LONG_swing (0%, n=9), C+_LONG_scalp (0%, n=3), C+_SHORT_day (0%, n=3), C+_SHORT_swing (0%, n=2). Filter out all C+ signals immediately\u2014zero real-world validation.\n\n## 3. The Real Problem: Training vs. Live Collapse\n\nYour B+_LONG_day shows 64.3% win rate in training but **0% in live trades (n=2)**. B+_SHORT_scalp shows 100% training but only **33.3% live (n=6)**. This indicates:\n\n- **Synthetic data is fundamentally unreliable** for your indicator combinations\n- Overfitting to historical patterns that don't translate to live market microstructure\n- Likely data-snooping bias in synthetic pattern generation\n\n## 4. Concerning Patterns\n\n- Only 9 real trades vs. 91 synthetic samples\u2014live sample size is dangerously small\n- A+ signals haven't been tested live at all (validation gap)\n- B+ and C+ grades show massive divergence between back",
+    "real_trades": 9,
+    "synthetic_trades": 91
+  },
+  {
+    "timestamp": "2026-02-27T22:06:23.828322",
+    "type": "retrain",
+    "real_samples": 9,
+    "synthetic_samples": 91,
+    "total_samples": 100
+  },
+  {
+    "timestamp": "2026-02-28T00:07:15.780385",
+    "type": "deep_analysis",
+    "analysis": "# Critical Issues First\n\n**Major Red Flag: Severe Overfitting**\nYour synthetic data shows 100% win rates across A+ signals (12/18 patterns), yet real trades show 0% on B+_LONG_day and 33.3% on B+_SHORT_scalp. This indicates your training data doesn't reflect live market conditions\u2014synthetic patterns are divorced from reality.\n\n---\n\n## 1. Best Performing Combos (Real Data Priority)\n- **B+_SHORT_scalp: 33.3% (n=6)** \u2014 Only live winner; small sample but actionable\n- Everything else: 0% or untested in production\n\nReal data is too sparse (9 trades total) for statistical confidence.\n\n---\n\n## 2. Consistently Losing Patterns\n**Hard Filter These:**\n- **B+_LONG_day: 0% (n=2)** \u2014 Opposite of synthetic (68.8%), signals completely unreliable in real execution\n- **C+ grade (all types): 0-50% max** \u2014 Synthetic showed C+ as uniformly poor; real data confirms C+ signals are noise\n\n**Action:** Disable C+ signal generation entirely. Reduce B+_LONG_day position sizing by 70% until you get 20+ real trades.\n\n---\n\n## 3. Indicator Thresholds ML Should Focus On\nGiven the A+/B+/C+ grade structure, your ML likely grades signal strength. **Recalibrate:**\n- **A+ threshold:** Too conservative in live markets (generating no A+ real trades yet?)\n- **B+ threshold:** Inconsistent\u2014scalps work (33%), day trades fail (0%)\n- **Timeframe sensitivity:** SHORT-scalp works; LONG",
+    "real_trades": 9,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T00:07:18.381893",
+    "type": "retrain",
+    "real_samples": 9,
+    "synthetic_samples": 101,
+    "total_samples": 110
+  },
+  {
+    "timestamp": "2026-02-28T00:37:11.281807",
+    "type": "retrain",
+    "real_samples": 9,
+    "synthetic_samples": 111,
+    "total_samples": 120
+  },
+  {
+    "timestamp": "2026-02-28T01:11:15.709180",
+    "type": "deep_analysis",
+    "analysis": "# Critical Analysis: Major Overfitting & Live Performance Collapse\n\n## 1. Best Win Rate Combos (Synthetic)\n**A+ grade dominates:**\n- A+_LONG_scalp: 100% (n=15)\n- A+_SHORT_scalp: 100% (n=14)\n- A+_LONG_day: 100% (n=2)\n- A+_SHORT_day: 100% (n=4)\n- A+_LONG_swing: 100% (n=5)\n- A+_SHORT_swing: 100% (n=5)\n\n**Problem:** All A+ patterns show unrealistic 100% synthetic win rates. This is synthetic data overfitting.\n\n## 2. Consistently Losing (Filter Hard)\n**All C+ grades fail:**\n- C+_LONG_day: 0% (n=7)\n- C+_LONG_scalp: 0% (n=4)\n- C+_LONG_swing: 0% (n=5)\n- C+_SHORT_day: 0% (n=4)\n- C+_SHORT_swing: 0% (n=3)\n\n**Action:** Remove C+ signals entirely\u201429 samples, zero wins.\n\n## 3. Concerning Pattern: Train-Test Divergence\n**Live vs. Synthetic (B+ grade only tested live):**\n- B+_LONG_day: 66.7% synthetic \u2192 **0% live** (n=2)\n- B+_SHORT_scalp: 75% synthetic (scalp variant) \u2192 **33.3% live** (n=6)\n\nThis 40-66 point drop signals severe overf",
+    "real_trades": 9,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T01:11:18.809494",
+    "type": "retrain",
+    "real_samples": 9,
+    "synthetic_samples": 121,
+    "total_samples": 130
+  },
+  {
+    "timestamp": "2026-02-28T01:18:58.341260",
+    "type": "retrain",
+    "real_samples": 9,
+    "synthetic_samples": 131,
+    "total_samples": 140
+  },
+  {
+    "timestamp": "2026-02-28T01:33:26.550714",
+    "type": "deep_analysis",
+    "analysis": "# Critical Analysis: Major Overfitting & Systematic Failures\n\n## 1. Best Performing Combos (Training)\n**A+ grade signals dominate:**\n- A+_LONG_scalp: 100% (15 samples)\n- A+_SHORT_scalp: 100% (15 samples)\n- A+_SHORT_day: 100% (4 samples)\n- A+_SHORT_swing: 100% (4 samples)\n- A+_LONG_swing: 100% (5 samples)\n\nReal performance shows ZERO A+ trades executed\u2014red flag.\n\n## 2. Consistent Losers (Eliminate or Redesign)\n**Hard filter these immediately:**\n- C+ anything: 0% win rate across all types (25 samples, 0 wins)\n- B+_LONG_day: 0% real (2/2 losses) vs 56.2% synthetic\u2014extreme divergence\n- C+_LONG_scalp: 0% real (2/2 losses) vs 0% synthetic (matches but still toxic)\n\n**Action:** Remove all C+ signals. They're noise.\n\n## 3. Indicator Thresholds to Prioritize\nThe A+ grade definition is clearly working in synthetic data but **failing entry generation in live markets**. Focus ML optimization on:\n\n1. **Grade separation mechanism** (A+ vs B+): Your threshold is too strict\u2014only 0 A+ trades triggered in 12 trades\n2. **Signal strength quantile**: Raise B+ threshold by ~15-20% to capture genuine A+ candidates\n3. **Scalp vs swing timing**: A+ scalps hit 100% but you're getting B+ scalps at 33",
+    "real_trades": 12,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T01:33:29.700502",
+    "type": "retrain",
+    "real_samples": 12,
+    "synthetic_samples": 141,
+    "total_samples": 153
+  },
+  {
+    "timestamp": "2026-02-28T01:44:14.311693",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis\n\n## 1. Best Performing Combinations\n**A+ grade signals dominate:**\n- A+_LONG_scalp: 100% (16 samples)\n- A+_SHORT_scalp: 100% (15 samples)\n- A+_SHORT_swing: 100% (4 samples)\n- A+_LONG_swing: 100% (5 samples)\n\nAll A+ combinations hit 100% win rate in training. **Priority: Scale A+ signals aggressively.**\n\n## 2. Consistent Losers to Filter\n**C+ grade is completely broken:**\n- C+_LONG_day: 0% (6 samples)\n- C+_LONG_scalp: 0% (3 samples)\n- C+_LONG_swing: 0% (10 samples)\n- C+_SHORT_swing: 0% (4 samples)\n- C+_SHORT_day: 0% (2 samples)\n\n**Action: Block all C+ signals immediately.** Zero legitimate edge detected.\n\n## 3. Critical ML Focus Areas\nYour grading system (A+/B+/C+) is **your strongest predictor**, not secondary indicators. Reverse-engineer what distinguishes A+ from B+ from C+ by analyzing:\n- Indicator values at entry for A+ trades\n- Threshold boundaries between grades\n- Volatility regime matching (scalp vs. day vs. swing)\n\n**The grade itself is your primary alpha\u2014optimize its calculation first.**\n\n## 4. Concerning Patterns\n**Major training/live divergence:**\n- B+_LONG_day: 61.1% training \u2192 0% live (2 trades, likely noise)\n- B",
+    "real_trades": 12,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T01:44:16.859114",
+    "type": "retrain",
+    "real_samples": 12,
+    "synthetic_samples": 151,
+    "total_samples": 163
+  },
+  {
+    "timestamp": "2026-02-28T14:53:04.975024",
+    "type": "deep_analysis",
+    "analysis": "# Trading Signal Optimization Analysis\n\n## 1. Best Performing Combinations\n\n**A+ signals dominate:**\n- A+_LONG_scalp: 100% (17 samples)\n- A+_SHORT_scalp: 100% (15 samples)\n- A+_SHORT_swing: 100% (4 samples)\n- A+_LONG_swing: 100% (5 samples)\n- A+_SHORT_day: 100% (5 samples)\n\n**B+ selective:**\n- B+_SHORT_day: 100% (6 samples) \u2014 **prioritize this**\n- B+_LONG_day: 61.1% (18 samples) \u2014 viable but weaker\n\n## 2. Combinations to Filter Harder\n\n**Eliminate C+ entirely:**\n- C+_LONG_day: 0% (6 samples)\n- C+_LONG_swing: 0% (9 samples)\n- C+_LONG_scalp: 0% (3 samples)\n- C+_SHORT_day: 0% (2 samples)\n\nC+ signals show zero predictive value across all timeframes. Hard-reject all C-grade signals.\n\n## 3. Critical Pattern: Real-World Degradation\n\n**Major red flag:** Real trades show 0% win rate on B+_LONG variants (4 trades) while synthetic shows 66.7%. This indicates:\n- Your grade threshold is too lenient (capturing false A+/B+ signals)\n- Scalp timeframe underperforms in live markets (liquidity/slippage issues)\n- LONG direction underperforms SHORT in current market conditions\n\n## 4. Concerning Patterns\n\n- **Surviv",
+    "real_trades": 13,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T14:53:08.137205",
+    "type": "retrain",
+    "real_samples": 13,
+    "synthetic_samples": 161,
+    "total_samples": 174
+  },
+  {
+    "timestamp": "2026-02-28T15:04:19.822046",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis\n\n## 1. Best Performing Combinations\n**A+ signals dominate:**\n- A+_LONG_scalp: 100% (17 samples)\n- A+_SHORT_scalp: 100% (16 samples)\n- A+_SHORT_day: 100% (5 samples)\n- A+_LONG_swing: 100% (5 samples)\n\n**B+ shows mixed results:**\n- B+_SHORT_day: 100% (synthetic only, 7 samples)\n- B+_LONG_day: 62.5% (synthetic), 0% (real trades)\n\n## 2. Consistent Losers (Filter Immediately)\n**C+ grades are catastrophic:**\n- C+_LONG_day: 0% (6 samples)\n- C+_LONG_scalp: 0% (2 real, 3 synthetic)\n- C+_LONG_swing: 0% (10 samples)\n- C+_SHORT_day: 0% (2 samples)\n\n**Action:** Reject all C+ LONG trades outright. C+ SHORT shows marginal viability (25-33%) but insufficient sample size.\n\n## 3. Critical ML Focus Areas\n1. **A+ indicator threshold optimization** \u2013 Your system identifies A+ signals perfectly in training but struggles generalizing. Increase A+ specificity to reduce false positives.\n2. **B+ grade boundary** \u2013 Large synthetic/real divergence (66.7% \u2192 0% for B+_LONG_scalp). Tighten B+ entry criteria or reclassify to C+.\n3. **Timeframe filtering** \u2013 LONG positions universally underperform except A",
+    "real_trades": 13,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T15:04:23.101974",
+    "type": "retrain",
+    "real_samples": 13,
+    "synthetic_samples": 171,
+    "total_samples": 184
+  },
+  {
+    "timestamp": "2026-02-28T15:14:02.705116",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis\n\n## 1. Best Performing Combinations\n**A+ signals dominate across all timeframes:**\n- A+_SHORT_scalp: 100% (16 samples)\n- A+_LONG_scalp: 100% (16 samples)\n- A+_SHORT_day: 100% (6 samples)\n- A+_LONG_swing: 100% (5 samples)\n\nB+ shows mixed results: SHORT outperforms (100% day trades, 33.3% real scalps) while LONG underperforms (0% real execution).\n\n## 2. Consistently Losing Combinations\n**Hard filter these immediately:**\n- C+_LONG_day: 0% (6 samples) \u2014 zero predictive value\n- C+_LONG_scalp: 0% (3 synthetic + 2 real) \u2014 consistent failure\n- C+_SHORT_day: 0% (2 samples)\n- B+_LONG_scalp: 0% real (2 trades) vs 50% synthetic \u2014 massive gap suggesting real-world drift\n- B+_LONG_day: 0% real (2 trades)\n\n**Action: Eliminate all C+ LONG trades and B+ LONG_scalp entirely.**\n\n## 3. Critical Indicator Threshold Focus\nThe A+/B+/C+ grading system is your strongest signal. Prioritize ML optimization on:\n- **Grade threshold tuning** (A+ vs B+ boundary) \u2014 this explains 66-100% win rate variance\n- **Timeframe matching** \u2014 SHORT signals outperform LONG at equivalent grades\n- **Scalp viability** \u2014 A+ scalps work (100%), B+ and C+",
+    "real_trades": 13,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T15:14:05.897521",
+    "type": "retrain",
+    "real_samples": 13,
+    "synthetic_samples": 182,
+    "total_samples": 195
+  },
+  {
+    "timestamp": "2026-02-28T15:24:11.982747",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis\n\n## 1. Best Performing Combinations\n**A+ signals dominate:** A+_SHORT_scalp (100%, n=16), A+_LONG_scalp (100%, n=16), A+_SHORT_day (100%, n=8), A+_LONG_swing (100%, n=5), A+_SHORT_swing (100%, n=3). These show consistent synthetic performance.\n\n**B+ is selective:** B+_SHORT_swing (100%, n=2) and B+_SHORT_day (100%, n=4) work; B+_LONG combinations underperform (0-60%).\n\n## 2. Consistently Losing Combinations\n**C+ is universally poor:** Every C+ combination shows 0% real win rates (C+_LONG_scalp, C+_LONG_day). Synthetic data shows C+_LONG_swing at 0% (n=9). **Hard filter: Reject all C+ signals.**\n\n**B+_LONG problem:** 0% across day and scalp timeframes in real trades despite 50-60% synthetic performance\u2014suggests the indicator grading is overoptimistic for LONG positions.\n\n## 3. Critical Indicator Threshold Focus\n- **Grade A thresholds:** Your A+ signals are bulletproof. Reverse-engineer exact parameters for signal strength (likely composite of momentum + volatility + trend alignment).\n- **Grade B thresholds:** Drastically stricter for LONG entries. Current B+ appears to have false positives.\n- **Direction bias:** SHORT signals significantly outperform LONG (real data: B+_SHORT_scalp 33.3% vs B+_LONG 0%). Adjust long entry confirmation requirements.\n\n##",
+    "real_trades": 13,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T15:24:15.277154",
+    "type": "retrain",
+    "real_samples": 13,
+    "synthetic_samples": 193,
+    "total_samples": 206
+  },
+  {
+    "timestamp": "2026-02-28T15:41:55.025001",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis\n\n## 1. Best Performing Combos (Synthetic Data)\n**A-grade signals dominate:**\n- A+_SHORT_scalp: 100% (14 samples)\n- A+_LONG_scalp: 100% (16 samples)\n- A+_SHORT_day: 100% (8 samples)\n- A+_LONG_swing: 100% (5 samples)\n- A+_SHORT_swing: 100% (4 samples)\n\nB-grade shows mixed results: 50-100% depending on timeframe.\n\n## 2. Consistently Losing Patterns\n**Hard filter these:**\n- C+_LONG_* (all variants): 0% win rate across day/swing/scalp\n- C+_SHORT_day: 0%\n- B+_LONG_day: 0% real trades (57.1% synthetic suggests overfitting)\n- B+_LONG_scalp: 0% real trades\n\n**Critical red flag:** LONG signals universally underperform in live trading.\n\n## 3. Indicator Focus\nPrioritize ML optimization on:\n1. **Grade classification** (A vs B vs C) - strongest predictor by far\n2. **Direction filter** (SHORT > LONG in live data)\n3. **Timeframe alignment** - scalp outperforms day for A-grades in synthetic data\n\nDeprioritize pure price momentum indicators if they're generating C-grade signals.\n\n## 4. Concerning Patterns\n- **Massive synthetic-to-real divergence:** B+_LONG_day is 57.1% synthetic but 0% in 4 live trades. Classic overfitting.\n- **",
+    "real_trades": 13,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T15:41:58.833676",
+    "type": "retrain",
+    "real_samples": 13,
+    "synthetic_samples": 204,
+    "total_samples": 217
+  },
+  {
+    "timestamp": "2026-02-28T16:11:53.579515",
+    "type": "retrain",
+    "real_samples": 13,
+    "synthetic_samples": 214,
+    "total_samples": 227
+  },
+  {
+    "timestamp": "2026-02-28T16:41:50.695531",
+    "type": "retrain",
+    "real_samples": 13,
+    "synthetic_samples": 225,
+    "total_samples": 238
+  },
+  {
+    "timestamp": "2026-02-28T17:11:51.285166",
+    "type": "retrain",
+    "real_samples": 15,
+    "synthetic_samples": 235,
+    "total_samples": 250
+  },
+  {
+    "timestamp": "2026-02-28T17:38:50.102125",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis: Critical Issues Identified\n\n## 1. Best Performing Combinations (Synthetic)\n**A+ signals dominate**: A+_SHORT_day (100%, 7 trades), A+_LONG_scalp (100%, 13), A+_SHORT_scalp (100%, 13), A+_LONG_swing (100%, 6). All A+ combinations show 100% win rates.\n\n**Real-world reality check**: Only B+_SHORT_scalp (28.6%, 7 trades) shows any profitability. This is your ONLY edge in live trading.\n\n## 2. Consistent Losers - Hard Filter Now\n- **B+_LONG (all timeframes)**: 0% real (4 trades across day/scalp)\n- **C+_LONG (all timeframes)**: 0% real (4 trades across day/scalp)\n- C+_SHORT_swing: 0% real performance despite 33.3% synthetic\n\n**Action**: Block all LONG signals on B+ and C+ grades immediately. They're synthetic mirages.\n\n## 3. Critical ML Indicator Focus\nThe massive synthetic-to-real gap reveals poor signal quality metrics:\n- **Grade assignment is broken**: A+ signals never trade live; C+/B+ dominate execution\n- **Prioritize**: Fix grade calculation\u2014likely missing volatility filters (ATR), momentum confirmation (RSI >60 for longs), and volume thresholds\n- **Scalp vs. day bias**: Scalp signals underperform (28.6% best vs. synthetic 100%)\u2014add tighter stop-loss confirmation and reduce slippage assumptions\n\n## 4. Alarming Patterns\n- **Synthetic-reality diverg",
+    "real_trades": 15,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T17:38:53.827563",
+    "type": "retrain",
+    "real_samples": 15,
+    "synthetic_samples": 245,
+    "total_samples": 260
+  },
+  {
+    "timestamp": "2026-02-28T18:08:44.678019",
+    "type": "retrain",
+    "real_samples": 16,
+    "synthetic_samples": 255,
+    "total_samples": 271
+  },
+  {
+    "timestamp": "2026-02-28T18:38:45.482434",
+    "type": "retrain",
+    "real_samples": 17,
+    "synthetic_samples": 265,
+    "total_samples": 282
+  },
+  {
+    "timestamp": "2026-02-28T19:08:44.992118",
+    "type": "retrain",
+    "real_samples": 17,
+    "synthetic_samples": 275,
+    "total_samples": 292
+  },
+  {
+    "timestamp": "2026-02-28T19:15:54.545504",
+    "type": "deep_analysis",
+    "analysis": "# Crypto Futures Signal Bot Analysis\n\n## 1. Best Performing Combinations\n**A+ grade dominates across all timeframes:**\n- A+_SHORT_day: 100% (9 samples)\n- A+_LONG_scalp: 100% (9 samples)\n- A+_SHORT_scalp: 100% (10 samples)\n- A+_LONG_swing: 100% (6 samples)\n- A+_SHORT_swing: 100% (8 samples)\n\n**B+ performs moderately:**\n- B+_SHORT_swing: 100% (3 samples)\n- B+_LONG_swing: 100% (3 samples)\n- B+_SHORT_day: 57.1% (7 samples)\n\n## 2. Failing Combinations (Filter Aggressively)\n**Eliminate C+ signals entirely:**\n- C+_LONG_scalp: 0% (5 samples)\n- C+_LONG_day: 0% (4 samples)\n- C+_SHORT_swing: 0% (3 samples)\n\n**Problematic B+ patterns:**\n- B+_LONG_day: 0% real performance (vs 55.6% synthetic) \u2014 **major red flag**\n- B+_LONG_scalp: 0% real performance (vs 55.6% synthetic) \u2014 **major red flag**\n\n## 3. Critical ML Focus Areas\n1. **A+ indicator thresholds** \u2014 replicate synthetic conditions precisely; A+ achieved 100% across 50+ samples\n2. **B+ validation** \u2014 synthetic 55-100% doesn't translate to live; investigate:\n   - Slippage/execution",
+    "real_trades": 17,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T19:15:58.516379",
+    "type": "retrain",
+    "real_samples": 17,
+    "synthetic_samples": 285,
+    "total_samples": 302
+  },
+  {
+    "timestamp": "2026-02-28T19:30:15.804788",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis: Critical Findings\n\n## 1. Best Performing Combinations (Synthetic)\n**A+ signals dominate across all timeframes:**\n- A+_LONG_scalp: 100% (n=8)\n- A+_SHORT_scalp: 100% (n=9)\n- A+_LONG_day: 100% (n=3)\n- A+_SHORT_day: 100% (n=7)\n- A+_SHORT_swing: 100% (n=9)\n\n**B+ shows mixed results:**\n- B+_LONG_swing: 100% (n=3)\n- B+_SHORT_swing: 100% (n=2)\n- B+_LONG_scalp: 60% (n=10)\n- B+_SHORT_scalp: 75% (n=4)\n\n## 2. Consistently Losing Combinations\n**Filter out entirely:**\n- C+_LONG_day: 0% (n=7)\n- C+_LONG_swing: 0% (n=4)\n- C+_LONG_scalp: 0% (n=2)\n- C+_SHORT_swing: 0% (n=3)\n\n**Finding:** C+ longs fail universally. C+ shorts marginally viable at 33.3%.\n\n## 3. Critical Reality Check: Synthetic vs. Real Divergence\n**Major red flag:** Real-world B+_LONG_day trades show 0% win rate (n=2) vs. 66.7% synthetic. B+_SHORT_scalp shows 22.2% real (n=9) vs. 75% synthetic.\n\n**Root cause",
+    "real_trades": 17,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T19:30:19.616180",
+    "type": "retrain",
+    "real_samples": 17,
+    "synthetic_samples": 295,
+    "total_samples": 312
+  },
+  {
+    "timestamp": "2026-02-28T20:00:14.403951",
+    "type": "retrain",
+    "real_samples": 17,
+    "synthetic_samples": 305,
+    "total_samples": 322
+  },
+  {
+    "timestamp": "2026-02-28T20:23:10.445351",
+    "type": "deep_analysis",
+    "analysis": "# Critical Analysis\n\n## 1. Best Performing Combos\n**A+ signals across all timeframes dominate:**\n- A+_LONG_scalp: 100% (7 samples)\n- A+_SHORT_scalp: 100% (11 samples)\n- A+_LONG_day: 100% (4 samples)\n- A+_SHORT_day: 100% (5 samples)\n- A+_LONG_swing: 100% (7 samples)\n- A+_SHORT_swing: 100% (9 samples)\n\n**Only B+_SHORT_scalp shows live profitability: 22.2% (9 trades)**\u2014barely breakeven after fees.\n\n## 2. Consistent Losers (Filter Harder)\n- **B+_LONG_day**: 0% (2 real trades, 55.6% synthetic) \u2192 Massive backtest/live gap\n- **B+_LONG_scalp**: 0% (2 real), 45.5% synthetic \u2192 Clear overfitting\n- **C+ everything**: 0-16.7% win rates \u2192 Should be hard-rejected\n\n**Action:** Remove all C+ signals. Deprioritize B+_LONG entirely.\n\n## 3. Indicator Threshold Focus\nThe A+/B+/C+ grading is your primary predictor. Concentrate ML effort on:\n1. **Signal strength thresholds** separating A+ from B+ (this explains the 100% vs 0% gap)\n2. **Directional bias confirmation**\u2014A+ shorts vastly outperform in real data (11 samples)\n3. **Scalp-specific entry precision**\u2014A+_scalp",
+    "real_trades": 17,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T20:23:15.176072",
+    "type": "retrain",
+    "real_samples": 17,
+    "synthetic_samples": 325,
+    "total_samples": 342
+  },
+  {
+    "timestamp": "2026-02-28T20:37:52.538336",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis\n\n## 1. Best Performing Combinations\n**A+ signals dominate across all timeframes:**\n- A+_LONG_swing: 100% (7 trades)\n- A+_SHORT_swing: 100% (7 trades)\n- A+_SHORT_scalp: 100% (12 trades)\n- A+_LONG_scalp: 100% (6 trades)\n- A+_SHORT_day: 100% (6 trades)\n- A+_LONG_day: 100% (3 trades)\n\nAll A+ combinations show perfect backtested performance. B+_SHORT_swing shows 100% (2 trades) but insufficient sample size.\n\n## 2. Consistently Losing Combinations\n**Filter out entirely:**\n- C+ signals: 0% win rate across ALL variations (13 total trades)\n- B+_LONG_day: 0% real performance (2 trades) vs. 55.6% backtest\n- B+_LONG_scalp: 0% real performance (2 trades) vs. 50% backtest\n\n**C+ grade is completely non-predictive\u2014eliminate this signal tier entirely.**\n\n## 3. Critical Indicator Threshold Focus\nThe A+/B+/C+ grading system is your primary lever. Prioritize:\n- **Tighten A+ thresholds**: Current A+ filters are capturing legitimate signals (100% consistency)\n- **Raise B+ entry requirements**: B+ shows 55-75% backtest performance but fails in live trading\u2014increase signal strength requirements by 15-25%\n- **Eliminate C+ entirely**: Zero predictive value indicates indicator miscalibration at lower thresholds\n\n##",
+    "real_trades": 17,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T20:37:56.331146",
+    "type": "retrain",
+    "real_samples": 17,
+    "synthetic_samples": 335,
+    "total_samples": 352
+  },
+  {
+    "timestamp": "2026-02-28T21:03:31.845958",
+    "type": "deep_analysis",
+    "analysis": "# Trading System Analysis\n\n## 1. Best Performing Combinations (Synthetic Data)\n**A+ signals dominate:**\n- A+_SHORT_scalp: 100% (12 samples) \u2013 highest volume + perfect record\n- A+_LONG_scalp: 100% (7 samples)\n- A+_SHORT_swing: 100% (7 samples)\n- A+_LONG_swing: 100% (5 samples)\n- A+_SHORT_day: 100% (6 samples)\n\n**B+ conditional success:**\n- B+_LONG_swing: 83.3% (6 samples)\n- B+_SHORT_day: 80% (5 samples)\n\n## 2. Combinations to Filter Aggressively\n**C+ signals universally fail:**\n- C+_LONG_day: 0% (8 samples)\n- C+_LONG_scalp: 16.7% (6 samples)\n- C+_SHORT_swing: 0% (2 samples)\n- C+_LONG_swing: 0% (3 samples)\n\n**Action:** Eliminate ALL C+ signals immediately.\n\n## 3. Critical Indicator Threshold Focus\nYour real-world data shows **B+_SHORT_scalp (22.2% win rate, 9 trades) is your only profitable real pattern**, yet synthetic training shows this should perform at 66.7%. This massive gap indicates:\n\n- **Grade thresholds too lenient** \u2013 \"B+\" is capturing marginal signals that fail live\n- **Scalp timeframe sensitivity** \u2013 short-duration trades show highest slippage/execution risk\n- **Focus ML effort on:** Tighten A+ grade requirements",
+    "real_trades": 17,
+    "synthetic_trades": 100
+  },
+  {
+    "timestamp": "2026-02-28T21:03:36.205003",
+    "type": "retrain",
+    "real_samples": 17,
+    "synthetic_samples": 345,
+    "total_samples": 362
+  },
+  {
+    "timestamp": "2026-02-28T21:33:29.998147",
+    "type": "retrain",
+    "real_samples": 17,
+    "synthetic_samples": 355,
+    "total_samples": 372
+  }
+]
